@@ -1,0 +1,23 @@
+Feature: Testing Saucedemo Website
+
+  Scenario: Successful login
+    Given I am on the SauceDemo login page
+    When I enter valid username and password
+    And I click the Login button
+    Then I should be logged in
+
+  Scenario: Invalid login
+    Given I am on the SauceDemo login page
+    When I enter invalid username and password
+    And I click the Login button
+    Then I should see an error message
+
+  Scenario: Add Item to Cart
+    Given I am logged in with username "standard_user" and password "secret_sauce"
+    When I add "Sauce Labs Backpack" to the cart
+    Then I should see the cart count as "1"
+
+  Scenario: Logout
+    Given I am logged in with username "standard_user" and password "secret_sauce"
+    When I log out
+    Then I should be on the login page
